@@ -1,7 +1,9 @@
 package tw.hsu.example.attractions.data
 
+import org.json.JSONObject
+
 interface JsonReader {
 
-    fun read()
+    fun read(json : JSONObject)
 
 }

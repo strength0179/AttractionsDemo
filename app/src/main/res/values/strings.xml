@@ -1,3 +1,19 @@
 <resources>
     <string name="app_name">Attractions</string>
+
+    <string name="address">地址</string>
+    <string name="modified">最後更新時間</string>
+
+    <array name="lang_string">
+        <item>正體中文</item>
+        <item>簡體中文</item>
+        <item>英文(English)</item>
+        <item>日文(日本語)</item>
+        <item>韓文(한국어)</item>
+        <item>西班牙文(español)</item>
+        <item>印尼文(Indonesia)</item>
+        <item>泰文(แบบไทย)</item>
+        <item>越南文(Tiếng Việt)</item>
+    </array>
+
 </resources>
