@@ -79,6 +79,7 @@ class AttractionUrlFragment  : Fragment() {
 
         view.webChromeClient = WebChromeClient();
         view.webViewClient = WebViewClient();
+        view.settings.javaScriptEnabled = true
         view.loadUrl((context as GetAttractions).getAttractions().selectedAttraction.get(0).url);
     }
 
