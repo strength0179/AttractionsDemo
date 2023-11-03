@@ -10,6 +10,7 @@ import tw.hsu.example.attractions.data.Attractions
 import tw.hsu.example.attractions.data.GetAttractions
 import tw.hsu.example.attractions.data.GetUsedHand
 import tw.hsu.example.attractions.data.GetViewPager
+import tw.hsu.example.attractions.ui.adapter.DemoCollectionAdapter
 import tw.hsu.example.attractions.ui.fragment.AttractionDetailFragment
 import tw.hsu.example.attractions.ui.fragment.AttractionUrlFragment
 import tw.hsu.example.attractions.ui.fragment.AttractionsFragment
@@ -67,27 +68,6 @@ class MainActivity : FragmentActivity(), GetAttractions, GetViewPager, GetUsedHa
 
     override fun isLeftHandUsed(): Boolean {
         return  lfu
-    }
-
-}
-
-class DemoCollectionAdapter(context : FragmentActivity) : FragmentStateAdapter(context) {
-
-    override fun getItemCount(): Int = 4
-
-    override fun createFragment(position: Int): Fragment {
-        // Return a NEW fragment instance in createFragment(int).
-        val fragment: Fragment =
-        when(position){
-            3 -> AttractionUrlFragment();
-            2 -> AttractionDetailFragment();
-            1 -> AttractionsFragment();
-            else -> {
-                MainFragment()
-            }
-        }
-
-        return fragment
     }
 
 }
