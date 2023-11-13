@@ -156,7 +156,9 @@ class MainFragment  : Fragment() {
                 catch (e : Exception){
                     Looper.prepare();
                     val lang_string = resources.getStringArray(R.array.lang_string)
-                    Toast.makeText(context, "No Data for [" + lang_string[lang_selected] + "]", Toast.LENGTH_LONG).show();
+                    if(!isDetached){
+                        Toast.makeText(context, "No Data for [" + lang_string[lang_selected] + "]", Toast.LENGTH_LONG).show();
+                    }
                 }
 
             }
@@ -287,8 +289,14 @@ class MainFragment  : Fragment() {
 
     private fun onClick() {
 
-        if((context as GetAttractions).getAttractions().attractions.size > 0)
-                (context as GetViewPager).getPager().setCurrentItem(1, true)
+        if((context as GetAttractions).getAttractions().attractions.size > 0) {
+            if(isLeftHandUsed){
+                (context as GetViewPager).getPager().setCurrentItem(2, true);
+            }
+            else{
+                (context as GetViewPager).getPager().setCurrentItem(4, true);
+            }
+        }
         else{
             Toast.makeText(context, "LOADONG... PLEASE WAIT.", Toast.LENGTH_LONG).show();
         }

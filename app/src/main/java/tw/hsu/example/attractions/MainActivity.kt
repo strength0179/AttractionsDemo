@@ -28,7 +28,7 @@ class MainActivity : FragmentActivity(), GetAttractions, GetViewPager, GetUsedHa
         viewPager = ViewPager2(this);
         viewPager.setUserInputEnabled(false);
         viewPager.adapter = DemoCollectionAdapter(this);
-
+        viewPager.currentItem = 3;
 
         setContentView(viewPager)
 
@@ -36,8 +36,14 @@ class MainActivity : FragmentActivity(), GetAttractions, GetViewPager, GetUsedHa
             true // default to enabled
         ) {
             override fun handleOnBackPressed() {
-                if(viewPager.currentItem != 0){
-                    viewPager.setCurrentItem(viewPager.currentItem -1 , true);
+                if(viewPager.currentItem != 3){
+                    if(isLeftHandUsed()){
+                        viewPager.setCurrentItem(viewPager.currentItem +1 , true);
+                    }
+                    else{
+                        viewPager.setCurrentItem(viewPager.currentItem -1 , true);
+                    }
+
                 }
                 else{
                     finish();

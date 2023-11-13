@@ -74,13 +74,15 @@ class AttractionUrlFragment  : Fragment() {
     }
 
     override fun onResume() {
-        super.onResume()
-        System.out.println("DetailUrl onResume");
+        super.onResume();
 
-        view.webChromeClient = WebChromeClient();
-        view.webViewClient = WebViewClient();
-        view.settings.javaScriptEnabled = true
-        view.loadUrl((context as GetAttractions).getAttractions().selectedAttraction.get(0).url);
+        if((context as GetAttractions).getAttractions().selectedAttraction.size > 0){
+            view.webChromeClient = WebChromeClient();
+            view.webViewClient = WebViewClient();
+            view.settings.javaScriptEnabled = true
+            view.loadUrl((context as GetAttractions).getAttractions().selectedAttraction.get(0).url);
+        }
+
     }
 
 }

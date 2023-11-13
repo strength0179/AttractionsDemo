@@ -54,9 +54,8 @@ class AttractionDetailFragment  : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        System.out.println("Detail BasicDataBinding onCreate");
         view = ComposeView(requireContext());
-
-
         return view;
     }
 
@@ -106,7 +105,7 @@ class AttractionDetailFragment  : Fragment() {
                     horizontalAlignment = Alignment.Start) {
                     FloatingActionButton(
                         onClick = {
-                            (context as GetViewPager).getPager().setCurrentItem(1, true);
+                            (context as GetViewPager).getPager().setCurrentItem(2, true);
                         }) {
                         Icon(Icons.Filled.Menu, "Floating action button.")
                     }
@@ -119,7 +118,8 @@ class AttractionDetailFragment  : Fragment() {
                         .align(Alignment.BottomEnd),
                     horizontalAlignment = Alignment.End) {
                     FloatingActionButton(onClick = {
-                        (context as GetViewPager).getPager().setCurrentItem(1, true);
+                        (context as GetViewPager).getPager().setCurrentItem(4, true);
+
                     }) {
                         Icon(Icons.Filled.Menu, "Floating action button.")
                     }
@@ -203,7 +203,13 @@ class AttractionDetailFragment  : Fragment() {
                     modifier = Modifier.padding(vertical = 8.dp)
                 ) {
                     Text(text = attraction.url, color = Color.Blue, modifier = Modifier.clickable {
-                        (context as GetViewPager).getPager().setCurrentItem(3);
+                        if((context as GetUsedHand).isLeftHandUsed()){
+                            (context as GetViewPager).getPager().setCurrentItem(0);
+                        }
+                        else{
+                            (context as GetViewPager).getPager().setCurrentItem(6);
+                        }
+
                     })
                 }
 

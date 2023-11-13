@@ -96,7 +96,7 @@ class AttractionsFragment  : Fragment() {
                     horizontalAlignment = Alignment.Start) {
                     FloatingActionButton(
                         onClick = {
-                            (context as GetViewPager).getPager().setCurrentItem(0, true)
+                            (context as GetViewPager).getPager().setCurrentItem(3, true)
                         }) {
                         Icon(Icons.Filled.Menu, "Floating action button.")
                     }
@@ -109,7 +109,7 @@ class AttractionsFragment  : Fragment() {
                         .align(Alignment.BottomEnd),
                     horizontalAlignment = Alignment.End) {
                     FloatingActionButton(onClick = {
-                        (context as GetViewPager).getPager().setCurrentItem(0, true)
+                        (context as GetViewPager).getPager().setCurrentItem(3, true)
                     }) {
                         Icon(Icons.Filled.Menu, "Floating action button.")
                     }
@@ -127,7 +127,6 @@ class AttractionsFragment  : Fragment() {
     @Composable
     fun AttractionsList(name: String, modifier: Modifier = Modifier,  arrayList : ArrayList<Attraction>) {
 
-        System.out.println("Detail BasicDataBinding List 1");
         LazyColumn(
             state = rememberLazyListState(1),
             contentPadding = PaddingValues(horizontal = 5.dp),
@@ -192,7 +191,14 @@ class AttractionsFragment  : Fragment() {
 
                             (context as GetAttractions).getAttractions().selectedAttraction.clear();
                             (context as GetAttractions).getAttractions().selectedAttraction.add(arrayList.get(it));
-                            (context as GetViewPager).getPager().setCurrentItem(2, true)
+
+                            if((context as GetUsedHand).isLeftHandUsed()){
+                                (context as GetViewPager).getPager().setCurrentItem(1, true)
+                            }
+                            else{
+                                (context as GetViewPager).getPager().setCurrentItem(5, true)
+                            }
+
                             System.out.println("Select [" + arrayList.get(it).name + "]");
                             System.out.println("Detail BasicDataBinding get " + arrayList.get(it).name);
                             System.out.println("Detail BasicDataBinding get " + (context as GetAttractions).getAttractions().selectedAttraction.get(0).name);
