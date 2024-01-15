@@ -14,4 +14,6 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "Attractions"
-include(":app")
+include(":attractions")
+include(":plane")
+include(":api")
