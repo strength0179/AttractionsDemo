@@ -8,7 +8,6 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import tw.hsu.example.plane.R
 import tw.hsu.example.plane.data.Flight
-import tw.hsu.example.plane.view.FlightRemarkView
 
 class FlightAdapter(private val dataSet: ArrayList<Flight>) : RecyclerView.Adapter<FlightHolder>(){
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FlightHolder {
@@ -23,7 +22,8 @@ class FlightAdapter(private val dataSet: ArrayList<Flight>) : RecyclerView.Adapt
     }
 
     override fun onBindViewHolder(holder: FlightHolder, position: Int) {
-        var flight : Flight= dataSet[position];
+        val safePosition = holder.adapterPosition
+        var flight : Flight= dataSet[safePosition];
         holder.schedule.text = flight.ScheduleTime;
         holder.actually.text = flight.ActualTime;
         holder.number.text = flight.FlightNumber;
@@ -33,7 +33,7 @@ class FlightAdapter(private val dataSet: ArrayList<Flight>) : RecyclerView.Adapt
         holder.arrival_id.text = flight.ArrivalAirportID;
         holder.arrival_name.text = flight.ArrivalAirport;
         holder.remark.text = flight.Remark;
-        System.out.println(flight.FlightNumber + " " + flight.Remark);
+//        System.out.println(flight.FlightNumber + " " + flight.Remark);
         if(flight.Remark.contains("取消")){
             holder.remark.setTextColor(Color.parseColor("#ff0000"));
         }
