@@ -1,24 +1,18 @@
 package tw.hsu.example.plane.service
 
 import android.content.Context
-import android.os.Message
-import org.json.JSONArray
 import org.json.JSONObject
 import tw.hsu.example.api.ApiError
 import tw.hsu.example.api.ApiSuccess
-import tw.hsu.example.plane.adapter.FlightAdapter
 import tw.hsu.example.plane.data.Currency
-import tw.hsu.example.plane.data.Flight
-import tw.hsu.example.plane.presenter.ContainPresenter
 import tw.hsu.example.plane.presenter.CurrencyContainer
-import tw.hsu.example.plane.presenter.HandlerProvider
-import java.security.MessageDigest
+import tw.hsu.example.plane.presenter.CurrencyPresenter
 
 class CurrencyResult(context : Context) : ApiSuccess, ApiError {
 
     var currencyContainer : CurrencyContainer;
     init {
-        currencyContainer = (context as ContainPresenter).currencyContainer();
+        currencyContainer = (context as CurrencyPresenter).currencyContainer();
     }
 
     override fun error(code: Int, msg: String) {

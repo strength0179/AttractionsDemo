@@ -10,9 +10,8 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import tw.hsu.example.plane.R
-import tw.hsu.example.plane.presenter.ContainPresenter
 import tw.hsu.example.plane.presenter.CurrencyContainer
-import tw.hsu.example.plane.presenter.FlightContainer
+import tw.hsu.example.plane.presenter.CurrencyPresenter
 
 class CurrencyFragment : Fragment() {
 
@@ -37,7 +36,7 @@ class CurrencyFragment : Fragment() {
             recycler.layoutManager = LinearLayoutManager(view.context);
         }
 
-        var presenter = context as ContainPresenter;
+        var presenter = context as CurrencyPresenter;
 
         var dataHolder : CurrencyContainer = presenter!!.currencyContainer();
         recycler.adapter = dataHolder.currecyNotifier();

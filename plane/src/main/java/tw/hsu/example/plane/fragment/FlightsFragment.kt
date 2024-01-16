@@ -9,11 +9,13 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import tw.hsu.example.flight.presenter.FlightPresenter
+import tw.hsu.example.flight.presenter.FlightContainer
 import tw.hsu.example.plane.R
-import tw.hsu.example.plane.presenter.ContainPresenter
-import tw.hsu.example.plane.presenter.FlightContainer
 
 class FlightsFragment : Fragment(){
+
+    var recycler: RecyclerView? = null;
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -23,31 +25,37 @@ class FlightsFragment : Fragment(){
         return inflater.inflate(R.layout.layout_fragment_recyclerview, container, false)
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    override fun onResume() {
+        super.onResume()
+
         arguments?.takeIf { it.containsKey("type") }?.apply {
-            val recycler: RecyclerView = view.findViewById(R.id.recyclerview);
 
             val orientation = resources.configuration.orientation
             if (orientation == Configuration.ORIENTATION_LANDSCAPE) {
-                recycler.layoutManager = GridLayoutManager(view.context, 2);
+                recycler?.layoutManager = GridLayoutManager(context, 2);
             } else {
-                recycler.layoutManager = LinearLayoutManager(view.context);
+                recycler?.layoutManager = LinearLayoutManager(context);
             }
 
-            var presenter = context as ContainPresenter;
+            var presenter = context as FlightPresenter;
 
             if(requireArguments().getInt("type") == 1){
 
                 var dataHolder : FlightContainer = presenter!!.arrivalContainer();
-                recycler.adapter = dataHolder.notifier();
+                recycler?.adapter = dataHolder.notifier();
             }
             else{
                 var dataHolder : FlightContainer = presenter!!.departureContainer();
-                recycler.adapter = dataHolder.notifier();
+                recycler?.adapter = dataHolder.notifier();
             }
 
-
         }
+
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        recycler = view.findViewById(R.id.recyclerview);
+
     }
 
 }

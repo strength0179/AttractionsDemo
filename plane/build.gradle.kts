@@ -62,5 +62,7 @@ dependencies {
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
 
     implementation(project(":api"))
+    implementation(project(":handler"))
+    implementation(project(":flight"))
 
 }

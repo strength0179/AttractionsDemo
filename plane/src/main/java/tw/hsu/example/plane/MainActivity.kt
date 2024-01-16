@@ -4,17 +4,18 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import androidx.appcompat.app.AppCompatActivity
-import tw.hsu.example.plane.callback.MainHandlerCallback
-import tw.hsu.example.plane.presenter.ContainPresenter
+import tw.hsu.example.handler.MainHandlerCallback
+import tw.hsu.example.flight.presenter.FlightPresenter
 import tw.hsu.example.plane.presenter.CurrencyContainer
-import tw.hsu.example.plane.presenter.FlightContainer
-import tw.hsu.example.plane.presenter.HandlerProvider
+import tw.hsu.example.flight.presenter.FlightContainer
+import tw.hsu.example.handler.HandlerProvider
 import tw.hsu.example.plane.service.ApiService
 import tw.hsu.example.plane.service.CurrencyDataHolder
-import tw.hsu.example.plane.service.FlightDataHolder
+import tw.hsu.example.flight.data.FlightDataHolder
+import tw.hsu.example.plane.presenter.CurrencyPresenter
 
 
-class MainActivity : AppCompatActivity(), ContainPresenter, HandlerProvider {
+class MainActivity : AppCompatActivity(), FlightPresenter, CurrencyPresenter, HandlerProvider {
 
     lateinit var apiService : ApiService;
     var arriveDataHolder : FlightDataHolder = FlightDataHolder();

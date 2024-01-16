@@ -1,7 +1,6 @@
 package tw.hsu.example.plane.service
 
 import tw.hsu.example.plane.adapter.CurrencyAdapter
-import tw.hsu.example.plane.adapter.FlightAdapter
 import tw.hsu.example.plane.data.Currency
 import tw.hsu.example.plane.presenter.CurrencyContainer
 

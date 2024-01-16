@@ -4,28 +4,20 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import tw.hsu.example.plane.fragment.CurrencyFragment
-import tw.hsu.example.plane.fragment.FlightsFragment
 
-class CollectionAdapter(act : FragmentActivity) : FragmentStateAdapter(act) {
+class CollectionAdapter(act : FragmentActivity, val fragments : ArrayList<Fragment>) : FragmentStateAdapter(act) {
 
 
-    override fun getItemCount(): Int = 3
+    override fun getItemCount(): Int = fragments.size
 
     override fun createFragment(position: Int): Fragment {
         // Return a NEW fragment instance in createFragment(int).
-        if(position == 2){
-            val fragment = CurrencyFragment()
-            return fragment
+        val fragment = fragments.get(position);
+        fragment.arguments = Bundle().apply {
+            // The object is just an integer.
+            putInt("type", position)
         }
-        else{
-            val fragment = FlightsFragment()
-            fragment.arguments = Bundle().apply {
-                // The object is just an integer.
-                putInt("type", position)
-            }
-            return fragment
-        }
+        return fragment
 
     }
 

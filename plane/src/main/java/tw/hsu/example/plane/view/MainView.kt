@@ -4,6 +4,7 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.RelativeLayout
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayout
@@ -11,6 +12,9 @@ import com.google.android.material.tabs.TabLayoutMediator
 import tw.hsu.example.plane.R
 import tw.hsu.example.plane.adapter.CollectionAdapter
 import tw.hsu.example.plane.callback.PageChange
+import tw.hsu.example.plane.fragment.CurrencyFragment
+import tw.hsu.example.plane.fragment.FlightsFragment
+import tw.hsu.example.flight.FlightsPageFragment
 
 class MainView : RelativeLayout {
 
@@ -27,8 +31,13 @@ class MainView : RelativeLayout {
         viewPager = findViewById(R.id.pager)
 
         tabLayout = this.findViewById(R.id.tab_layout)
+        val list = ArrayList<Fragment>();
+        list.add(FlightsPageFragment());
+//        list.add(FlightsFragment());
+        list.add(FlightsFragment());
+        list.add(CurrencyFragment());
 
-        collectionAdapter = CollectionAdapter(context as FragmentActivity)
+        collectionAdapter = CollectionAdapter(context as FragmentActivity, list)
         viewPager.adapter = collectionAdapter
 
         TabLayoutMediator(tabLayout, viewPager) { tab, position ->
