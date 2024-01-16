@@ -17,3 +17,5 @@ rootProject.name = "Attractions"
 //include(":attractions")
 include(":plane")
 include(":api")
+include(":flight")
+include(":handler")
